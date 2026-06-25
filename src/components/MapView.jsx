@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import L from 'leaflet';
 import 'leaflet/dist/leaflet.css';
-import { ChevronLeft, ChevronRight, Clock, Navigation, Locate } from 'lucide-react';
+import { ChevronLeft, ChevronRight, Clock, Navigation, Locate, ExternalLink } from 'lucide-react';
 
 // Fix default Leaflet icon paths in builds
 delete L.Icon.Default.prototype._getIconUrl;
@@ -68,6 +68,21 @@ const getRoutePath = async (spots) => {
     }
   }
   return { path, distance: totalDistance, duration: totalDuration };
+};
+
+// Generate Google Maps Directions URL
+const getGoogleMapsDirUrl = (spots) => {
+  if (!spots || spots.length === 0) return '';
+  if (spots.length === 1) {
+    return `https://www.google.com/maps/search/?api=1&query=${spots[0].lat},${spots[0].lng}`;
+  }
+  const origin = `${spots[0].lat},${spots[0].lng}`;
+  const destination = `${spots[spots.length - 1].lat},${spots[spots.length - 1].lng}`;
+  if (spots.length === 2) {
+    return `https://www.google.com/maps/dir/?api=1&origin=${origin}&destination=${destination}&travelmode=driving`;
+  }
+  const waypoints = spots.slice(1, -1).map(s => `${s.lat},${s.lng}`).join('|');
+  return `https://www.google.com/maps/dir/?api=1&origin=${origin}&destination=${destination}&waypoints=${encodeURIComponent(waypoints)}&travelmode=driving`;
 };
 
 export default function MapView({ tripData, activeDay, setActiveDay }) {
@@ -340,11 +355,14 @@ export default function MapView({ tripData, activeDay, setActiveDay }) {
           zIndex: 400,
           background: 'rgba(22, 28, 45, 0.85)',
           backdropFilter: 'blur(10px)',
-          border: '1px solid rgba(255,255,255,0.08)',
+          border: '1px solid rgba(255, 255, 255, 0.08)',
           borderRadius: '12px',
           padding: '10px 14px',
           boxShadow: '0 4px 12px rgba(0,0,0,0.3)',
-          maxWidth: '260px'
+          maxWidth: '260px',
+          display: 'flex',
+          flexDirection: 'column',
+          gap: '2px'
         }}>
           <h4 style={{ fontSize: '13px', margin: 0, color: 'white' }}>Day {dayData.dayNum} 行程路徑</h4>
           <span style={{ fontSize: '11px', color: 'var(--text-muted)', display: 'block', margin: '2px 0' }}>
@@ -367,6 +385,43 @@ export default function MapView({ tripData, activeDay, setActiveDay }) {
                 全程約 {(routeInfo.distance / 1000).toFixed(1)} 公里 | 🚗 約 {Math.round(routeInfo.duration / 60)} 分鐘
               </span>
             </div>
+          )}
+          {validSpots.length > 0 && (
+            <a
+              href={getGoogleMapsDirUrl(validSpots)}
+              target="_blank"
+              rel="noopener noreferrer"
+              style={{
+                marginTop: '8px',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                gap: '6px',
+                padding: '6px 12px',
+                background: 'linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%)',
+                color: 'white',
+                border: 'none',
+                borderRadius: '8px',
+                fontSize: '11px',
+                fontWeight: '600',
+                textDecoration: 'none',
+                cursor: 'pointer',
+                transition: 'all 0.2s',
+                boxShadow: '0 2px 8px var(--primary-glow)',
+                textAlign: 'center'
+              }}
+              onMouseEnter={e => {
+                e.currentTarget.style.transform = 'translateY(-1px)';
+                e.currentTarget.style.boxShadow = '0 4px 12px var(--primary-glow)';
+              }}
+              onMouseLeave={e => {
+                e.currentTarget.style.transform = 'translateY(0)';
+                e.currentTarget.style.boxShadow = '0 2px 8px var(--primary-glow)';
+              }}
+            >
+              <ExternalLink size={11} />
+              <span>Google Maps 導航路線</span>
+            </a>
           )}
         </div>
 
