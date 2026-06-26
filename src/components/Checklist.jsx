@@ -132,6 +132,7 @@ export default function Checklist() {
           required
           style={{
             flex: 2,
+            minWidth: 0,
             background: 'rgba(255,255,255,0.05)',
             border: '1px solid rgba(255,255,255,0.1)',
             borderRadius: '8px',
@@ -145,6 +146,7 @@ export default function Checklist() {
           onChange={(e) => setSelectedCat(e.target.value)}
           style={{
             flex: 1.2,
+            minWidth: 0,
             background: '#1e293b',
             border: '1px solid rgba(255,255,255,0.1)',
             borderRadius: '8px',
@@ -202,17 +204,18 @@ export default function Checklist() {
                     userSelect: 'none'
                   }}
                 >
-                  <div style={{ display: 'flex', alignItems: 'center', gap: '10px', flex: 1 }}>
+                  <div style={{ display: 'flex', alignItems: 'center', gap: '10px', flex: 1, minWidth: 0 }}>
                     {item.checked ? (
-                      <CheckSquare size={18} style={{ color: 'var(--success)' }} />
+                      <CheckSquare size={18} style={{ color: 'var(--success)', flexShrink: 0 }} />
                     ) : (
-                      <Square size={18} style={{ color: 'var(--text-dark)' }} />
+                      <Square size={18} style={{ color: 'var(--text-dark)', flexShrink: 0 }} />
                     )}
                     <span style={{ 
                       fontSize: '13px', 
                       color: item.checked ? 'var(--text-dark)' : 'var(--text-main)',
                       textDecoration: item.checked ? 'line-through' : 'none',
-                      transition: 'all 0.2s'
+                      transition: 'all 0.2s',
+                      wordBreak: 'break-all'
                     }}>
                       {item.text}
                     </span>

@@ -723,9 +723,9 @@ export default function InfoTab() {
                   onMouseEnter={e => e.currentTarget.style.background = 'rgba(255,255,255,0.06)'}
                   onMouseLeave={e => e.currentTarget.style.background = 'rgba(255,255,255,0.02)'}
                 >
-                  <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '2px' }}>
-                    <span style={{ fontSize: '13px', fontWeight: '600', color: 'white' }}>{t.tw}</span>
-                    <span style={{ fontSize: '11px', color: 'var(--primary-light)' }}>點擊放大 🔍</span>
+                  <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '2px', gap: '8px' }}>
+                    <span style={{ fontSize: '13px', fontWeight: '600', color: 'white', minWidth: 0, wordBreak: 'break-word' }}>{t.tw}</span>
+                    <span style={{ fontSize: '11px', color: 'var(--primary-light)', flexShrink: 0 }}>點擊放大 🔍</span>
                   </div>
                   <div style={{ fontSize: '12px', color: 'var(--text-muted)', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
                     {t.jp}
@@ -765,9 +765,9 @@ export default function InfoTab() {
                   padding: '14px'
                 }}
               >
-                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', marginBottom: '6px' }}>
-                  <h4 style={{ fontSize: '13.5px', fontWeight: '700', color: 'white' }}>{food.name}</h4>
-                  <span style={{ fontSize: '9.5px', color: food.color, background: `${food.color}15`, padding: '2px 8px', borderRadius: '12px', fontWeight: '600', border: `1px solid ${food.color}30` }}>
+                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', marginBottom: '6px', gap: '8px' }}>
+                  <h4 style={{ fontSize: '13.5px', fontWeight: '700', color: 'white', minWidth: 0, wordBreak: 'break-word' }}>{food.name}</h4>
+                  <span style={{ fontSize: '9.5px', color: food.color, background: `${food.color}15`, padding: '2px 8px', borderRadius: '12px', fontWeight: '600', border: `1px solid ${food.color}30`, flexShrink: 0 }}>
                     {food.category}
                   </span>
                 </div>

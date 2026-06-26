@@ -202,6 +202,7 @@ export default function ExpenseTracker({ members = ['自己', '旅伴A', '旅伴
             required
             style={{
               flex: 2,
+              minWidth: 0,
               background: 'rgba(255,255,255,0.05)',
               border: '1px solid rgba(255,255,255,0.1)',
               borderRadius: '8px',
@@ -218,6 +219,7 @@ export default function ExpenseTracker({ members = ['自己', '旅伴A', '旅伴
             required
             style={{
               flex: 1,
+              minWidth: 0,
               background: 'rgba(255,255,255,0.05)',
               border: '1px solid rgba(255,255,255,0.1)',
               borderRadius: '8px',
@@ -235,7 +237,9 @@ export default function ExpenseTracker({ members = ['自己', '旅伴A', '旅伴
               borderRadius: '8px',
               color: 'white',
               padding: '8px',
-              fontSize: '13px'
+              fontSize: '13px',
+              width: 'auto',
+              flexShrink: 0
             }}
           >
             <option value="JPY">JPY ¥</option>
@@ -249,6 +253,7 @@ export default function ExpenseTracker({ members = ['自己', '旅伴A', '旅伴
             onChange={(e) => setCategory(e.target.value)}
             style={{
               flex: 1,
+              minWidth: 0,
               background: '#1e293b',
               border: '1px solid rgba(255,255,255,0.1)',
               borderRadius: '8px',
@@ -270,6 +275,7 @@ export default function ExpenseTracker({ members = ['自己', '旅伴A', '旅伴
             onChange={(e) => setPaidBy(e.target.value)}
             style={{
               flex: 1,
+              minWidth: 0,
               background: '#1e293b',
               border: '1px solid rgba(255,255,255,0.1)',
               borderRadius: '8px',
@@ -306,24 +312,25 @@ export default function ExpenseTracker({ members = ['自己', '旅伴A', '旅伴
                   borderBottom: '1px solid rgba(255,255,255,0.05)'
                 }}
               >
-                <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+                <div style={{ display: 'flex', alignItems: 'center', gap: '8px', flex: 1, minWidth: 0 }}>
                   <span 
                     style={{ 
                       width: '8px', 
                       height: '8px', 
                       borderRadius: '50%', 
-                      background: cat.color 
+                      background: cat.color,
+                      flexShrink: 0
                     }} 
                   />
-                  <div>
-                    <span style={{ fontSize: '13px', fontWeight: '500' }}>{exp.text}</span>
-                    <span style={{ fontSize: '10px', color: 'var(--text-dark)', display: 'block' }}>
+                  <div style={{ minWidth: 0, flex: 1 }}>
+                    <span style={{ fontSize: '13px', fontWeight: '500', display: 'block', wordBreak: 'break-word' }}>{exp.text}</span>
+                    <span style={{ fontSize: '10px', color: 'var(--text-dark)', display: 'block', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
                       {exp.paidBy} 支付 • {cat.name}
                     </span>
                   </div>
                 </div>
                 
-                <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
+                <div style={{ display: 'flex', alignItems: 'center', gap: '12px', flexShrink: 0 }}>
                   <div style={{ textAlign: 'right' }}>
                     <span style={{ fontSize: '13px', fontWeight: 'bold' }}>
                       {exp.currency === 'JPY' ? '¥' : '$'} {exp.amount.toLocaleString()}

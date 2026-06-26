@@ -172,19 +172,21 @@ export default function ItineraryTab({ tripData, setTripData, activeDay, setActi
                   </button>
 
                   {/* Header: Time & Spot Name */}
-                  <div style={{ display: 'flex', alignItems: 'center', marginBottom: '8px', paddingRight: '24px' }}>
-                    <Icon size={16} style={{ color: 'var(--primary-light)', marginRight: '8px' }} />
+                  <div style={{ display: 'flex', alignItems: 'flex-start', marginBottom: '8px', paddingRight: '24px', flexWrap: 'wrap', gap: '6px' }}>
+                    <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+                      <Icon size={16} style={{ color: 'var(--primary-light)', flexShrink: 0 }} />
+                      <span className="badge badge-teal" style={{ fontSize: '11px', flexShrink: 0 }}>
+                        <Clock size={10} /> {spot.time}
+                      </span>
+                    </div>
                     <span style={{ 
                       fontWeight: 'bold', 
                       fontSize: '15px', 
                       color: 'var(--text-main)',
-                      display: 'flex',
-                      alignItems: 'center',
-                      gap: '8px'
+                      wordBreak: 'break-word',
+                      flex: 1,
+                      minWidth: '150px'
                     }}>
-                      <span className="badge badge-teal" style={{ fontSize: '11px' }}>
-                        <Clock size={10} /> {spot.time}
-                      </span>
                       {spot.name}
                     </span>
                   </div>
@@ -229,7 +231,7 @@ export default function ItineraryTab({ tripData, setTripData, activeDay, setActi
           <h3 style={{ fontSize: '16px', marginBottom: '12px', color: 'var(--primary-light)' }}>新增行程景點</h3>
           
           <div style={{ display: 'flex', gap: '8px', marginBottom: '8px' }}>
-            <div style={{ flex: 1 }}>
+            <div style={{ flex: 1, minWidth: 0 }}>
               <label style={{ display: 'block', fontSize: '11px', color: 'var(--text-muted)', marginBottom: '4px' }}>時間 (HH:MM)</label>
               <input
                 type="text"
@@ -248,7 +250,7 @@ export default function ItineraryTab({ tripData, setTripData, activeDay, setActi
                 }}
               />
             </div>
-            <div style={{ flex: 1 }}>
+            <div style={{ flex: 1, minWidth: 0 }}>
               <label style={{ display: 'block', fontSize: '11px', color: 'var(--text-muted)', marginBottom: '4px' }}>類型</label>
               <select
                 value={newSpot.iconType}
@@ -316,7 +318,7 @@ export default function ItineraryTab({ tripData, setTripData, activeDay, setActi
           </div>
 
           <div style={{ display: 'flex', gap: '8px', marginBottom: '12px' }}>
-            <div style={{ flex: 1 }}>
+            <div style={{ flex: 1, minWidth: 0 }}>
               <label style={{ display: 'block', fontSize: '11px', color: 'var(--text-muted)', marginBottom: '4px' }}>緯度 (Lat)</label>
               <input
                 type="number"
@@ -334,7 +336,7 @@ export default function ItineraryTab({ tripData, setTripData, activeDay, setActi
                 }}
               />
             </div>
-            <div style={{ flex: 1 }}>
+            <div style={{ flex: 1, minWidth: 0 }}>
               <label style={{ display: 'block', fontSize: '11px', color: 'var(--text-muted)', marginBottom: '4px' }}>經度 (Lng)</label>
               <input
                 type="number"
