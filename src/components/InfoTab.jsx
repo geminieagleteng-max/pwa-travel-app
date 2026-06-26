@@ -63,13 +63,13 @@ const GOURMET_LIST = [
 ];
 
 const WEATHER_GUIDE_DATA = [
-  { day: 'Day 1', date: '6/27 (六)', spot: '博多運河城探索', tips: '夏裝短袖即可。博多運河城為大型購物商場，室內冷氣較強，可攜帶一件薄襯衫。', min: 26, max: 33, emoji: '🌤️' },
-  { day: 'Day 2', date: '6/28 (日)', spot: '門司港、小倉城', tips: '門司港臨海海風較大，皿倉山夜景海拔較高，建議攜帶薄外套與防風帽子防寒防風。', min: 25, max: 31, emoji: '☁️' },
-  { day: 'Day 3', date: '6/29 (一)', spot: '歷史熊本城', tips: '熊本城天守閣與櫻之馬場戶外極為空曠炎熱，紫外線強，需著防曬衣物並多喝水防暑。', min: 27, max: 34, emoji: '☀️' },
-  { day: 'Day 4', date: '6/30 (二)', spot: '海之中道水族館', tips: '水族館主秀為戶外劇場，海濱公園陽光充足，防曬油與遮陽帽必不可少。', min: 26, max: 33, emoji: '🌤️' },
-  { day: 'Day 5', date: '7/1 (三)', spot: '櫛田神社、福岡塔', tips: '市區歷史散步路程較多，建議穿著防滑好走的運動鞋，並攜帶輕便折疊傘備用。', min: 24, max: 30, emoji: '🌧️' },
-  { day: 'Day 6', date: '7/2 (四)', spot: '柳川遊船、太宰府', tips: '⚠️柳川乘船體驗全程約 70 分鐘無遮棚，烈日曝曬嚴重，必備遮陽帽、抗UV傘與墨鏡。', min: 27, max: 34, emoji: '☀️' },
-  { day: 'Day 7', date: '7/3 (五)', spot: '天神爆買、返台', tips: '以輕便好活動的夏裝為主，便於最後的行李搬運與登機安檢。', min: 26, max: 33, emoji: '☁️' }
+  { day: 'Day 1', date: '6/27 (六)', spot: '博多車站與採購', tips: '夏裝短袖即可。博多車站及商圈冷氣較強，建議攜帶薄外套防冷氣。', min: 26, max: 33, emoji: '🌤️' },
+  { day: 'Day 2', date: '6/28 (日)', spot: '門司港、小倉城', tips: '門司港與關門海峽海風大，若前往皿倉山看夜景海拔高，務必攜帶薄外套與防風帽。', min: 25, max: 31, emoji: '☁️' },
+  { day: 'Day 3', date: '6/29 (一)', spot: '歷史熊本城', tips: '熊本城天守閣與櫻之馬場戶外空曠炎熱，紫外線強，需著防曬衣物並補充水分。', min: 27, max: 34, emoji: '☀️' },
+  { day: 'Day 4', date: '6/30 (二)', spot: '長崎與稻佐山夜景', tips: '長崎為山城步行多。晚上登稻佐山看夜景風大氣溫低，建議攜帶防風外套防寒。', min: 22, max: 29, emoji: '🌤️' },
+  { day: 'Day 5', date: '7/1 (三)', spot: '櫛田神社、福岡塔', tips: '市區歷史散步路程較多，穿著好走運動鞋，福岡塔海濱風稍大可帶輕薄外套。', min: 24, max: 30, emoji: '🌧️' },
+  { day: 'Day 6', date: '7/2 (四)', spot: '柳川遊船、太宰府', tips: '⚠️柳川遊船無遮雨棚，烈日曝曬嚴重，必備遮陽帽、抗UV傘與墨鏡防曬。', min: 27, max: 34, emoji: '☀️' },
+  { day: 'Day 7', date: '7/3 (五)', spot: '天神爆買、返台', tips: '輕便夏裝為主，便於最後的行李整理、搬運與登機安檢。', min: 26, max: 33, emoji: '☁️' }
 ];
 
 const getWeatherAnimClass = (emoji) => {
@@ -535,17 +535,17 @@ export default function InfoTab() {
       {/* Warnings & Notices Detail Page */}
       {activeSection === 'warnings' && (
         <div className="fade-in">
-          {renderSubHeader('飯店入住與行李保管警告')}
+          {renderSubHeader('飯店入住與行李保管建議')}
           <div className="glass-card" style={{ borderLeft: '4px solid var(--warning)', margin: 0 }}>
             <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '10px' }}>
               <AlertTriangle size={18} style={{ color: 'var(--warning)' }} />
-              <h3 style={{ fontSize: '14px', color: 'white' }}>飯店入住營業時間警告</h3>
+              <h3 style={{ fontSize: '14px', color: 'white' }}>飯店入住與退房時間提醒</h3>
             </div>
             <p style={{ fontSize: '12.5px', color: 'var(--text-muted)', lineHeight: '1.6', margin: '0 0 12px 0' }}>
-              <strong>montan HAKATA (D3-D5)</strong> 櫃檯營業時間為 <strong>07:00 - 24:00</strong>，最晚 Check-in 時間為 <strong>23:30</strong>。
+              <strong>Amistad Hotel Fukuoka (D1-D5)</strong>：辦理入住時間為 <strong>15:00</strong> 起，退房時間為 <strong>10:00</strong> 前。
             </p>
             <p style={{ fontSize: '12.5px', color: 'var(--text-muted)', lineHeight: '1.6', margin: 0 }}>
-              ⚠️超過半夜 12 點大門鎖定且無人留守，將無法辦理入住！請特別注意時間安排。
+              <strong>Richmond Hotel Fukuoka Tenjin (D5-D7)</strong>：辦理入住時間為 <strong>14:00</strong> 起，退房時間為 <strong>11:00</strong> 前。
             </p>
           </div>
           
@@ -555,11 +555,11 @@ export default function InfoTab() {
               <h3 style={{ fontSize: '14px', color: 'white' }}>🎒 行李寄放策略建議</h3>
             </div>
             <p style={{ fontSize: '12px', color: 'var(--text-muted)', lineHeight: '1.6', margin: '0 0 8px 0' }}>
-              本趟旅程共更換了 3 次飯店，為確保 4 位大人不需拖著行李奔波，請遵守以下策略：
+              為確保 4 位大人在更換飯店當天不需拖著行李奔波，請遵守以下策略：
             </p>
             <ul style={{ fontSize: '12px', color: 'var(--text-muted)', margin: 0, paddingLeft: '16px', display: 'flex', flexDirection: 'column', gap: '6px' }}>
-              <li><strong>Day 3 (Amistad ➔ montan)</strong>：早上 8:30 退房後，直接把行李拉去 <strong>montan HAKATA</strong> 免費寄放，然後輕裝去搭新幹線往熊本。</li>
-              <li><strong>Day 5 (montan ➔ Richmond)</strong>：早上 9:30 退房後，直接坐地鐵把行李拉去 <strong>Richmond Hotel</strong> 免費寄放，再開始逛街去櫛田神社，晚上累了直接在 Richmond 入住。</li>
+              <li><strong>Day 5 (Amistad ➔ Richmond)</strong>：早上 9:00 由 Amistad Hotel 退房後，直接坐地鐵將行李拉至 <strong>Richmond Hotel Fukuoka Tenjin</strong> 免費寄放，隨後即可輕裝前往櫛田神社與天神商圈市區一日遊，晚上累了再回 Richmond 辦理入住。</li>
+              <li><strong>Day 7 (Richmond ➔ 返台)</strong>：早上 9:30 退房後將行李寄存在 Richmond 櫃檯，即可進行天神/博多最後購物衝刺，下午 16:00 回飯店取行李搭計程車前往機場。</li>
             </ul>
           </div>
         </div>

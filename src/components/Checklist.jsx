@@ -2,27 +2,35 @@ import React, { useState } from 'react';
 import { CheckSquare, Square, Plus, Trash2, CheckCircle2 } from 'lucide-react';
 
 const DEFAULT_CHECKLIST = [
+  // docs
   { id: 1, text: '護照正本（效期大於6個月）', category: 'docs', checked: false },
-  { id: 2, text: 'Visit Japan Web 二維碼截圖', category: 'docs', checked: false },
-  { id: 3, text: '日圓現金 & 信用卡', category: 'docs', checked: false },
-  { id: 4, text: '北九州 JR Pass 憑證/電子單', category: 'docs', checked: false },
-  { id: 5, text: '國外上網 SIM 卡 / eSIM 二維碼', category: 'docs', checked: false },
+  { id: 2, text: 'Visit Japan Web 填寫與登錄', category: 'docs', checked: false },
+  { id: 3, text: '投保旅遊平安險（台灣+日本）', category: 'docs', checked: false },
+  { id: 4, text: '購買北九州 JR Pass 三日周遊券', category: 'docs', checked: false },
+  { id: 5, text: '購買柳川 ➔ 太宰府 觀光套票', category: 'docs', checked: false },
+  { id: 6, text: '關門海峽四葉草車票（遊客中心 台幣200元）', category: 'docs', checked: false },
+  { id: 7, text: '兌換日圓現金 & 準備信用卡', category: 'docs', checked: false },
+  { id: 8, text: '預約/確認台灣計程車（去程與回程）', category: 'docs', checked: false },
+  { id: 9, text: '下載與註冊日本計程車 App (如 GO, DiDi)', category: 'docs', checked: false },
+  { id: 10, text: '整理日本必買購物清單', category: 'docs', checked: false },
+  { id: 11, text: '收集與標記想吃的餐廳 & 美食清單', category: 'docs', checked: false },
+  
+  // clothes
+  { id: 12, text: '向朋友或家人借行李箱', category: 'clothes', checked: false },
+  { id: 13, text: '輕便換洗衣物（夏裝）', category: 'clothes', checked: false },
+  { id: 14, text: '防風防曬薄外套（登山口與海邊防風）', category: 'clothes', checked: false },
+  { id: 15, text: '好走的運動鞋/慢跑鞋（市區散步多）', category: 'clothes', checked: false },
+  { id: 16, text: '折疊雨傘 / 輕便雨衣', category: 'clothes', checked: false },
+  { id: 17, text: '墨鏡 & 防曬帽（柳川遊船防曝曬）', category: 'clothes', checked: false },
 
-  { id: 6, text: '輕便換洗衣物（夏裝）', category: 'clothes', checked: false },
-  { id: 7, text: '防風防曬薄外套', category: 'clothes', checked: false },
-  { id: 8, text: '好走的運動鞋/慢跑鞋', category: 'clothes', checked: false },
-  { id: 9, text: '折疊雨傘 / 輕便雨衣', category: 'clothes', checked: false },
-  { id: 10, text: '墨鏡 & 防曬帽', category: 'clothes', checked: false },
+  // electronics
+  { id: 18, text: '手機充電線 & 充電頭', category: 'electronics', checked: false },
+  { id: 19, text: '行動電源（須攜帶隨身行李）', category: 'electronics', checked: false },
 
-  { id: 11, text: '手機充電線 & 充電頭', category: 'electronics', checked: false },
-  { id: 12, text: '行動電源（須攜帶隨身行李）', category: 'electronics', checked: false },
-  { id: 13, text: '日本插頭適配器（雙平頭，一般同台灣）', category: 'electronics', checked: false },
-  { id: 14, text: '相機 & 記憶卡', category: 'electronics', checked: false },
-
-  { id: 15, text: '個人常備藥品（感冒、暈車、止痛）', category: 'medical', checked: false },
-  { id: 16, text: '高係數防曬乳', category: 'medical', checked: false },
-  { id: 17, text: '牙刷牙膏盥洗套組', category: 'medical', checked: false },
-  { id: 18, text: '保濕乳液 / 口罩', category: 'medical', checked: false }
+  // medical
+  { id: 20, text: '個人常備藥品（感冒、防暈車、止痛藥）', category: 'medical', checked: false },
+  { id: 21, text: '高係數防曬乳', category: 'medical', checked: false },
+  { id: 22, text: '個人盥洗用品與牙刷牙膏', category: 'medical', checked: false }
 ];
 
 const CATEGORIES = {

@@ -12,7 +12,7 @@ import { Wifi, WifiOff, Compass } from 'lucide-react';
 export default function App() {
   const [activeTab, setActiveTab] = useState('itinerary');
   const [activeDay, setActiveDay] = useState(1);
-  const [tripData, setTripData] = useLocalStorage('travel_trip_data', fukuokaTripData);
+  const [tripData, setTripData] = useLocalStorage('travel_trip_data_v2', fukuokaTripData);
   const [isOnline, setIsOnline] = useState(navigator.onLine);
 
   useEffect(() => {
